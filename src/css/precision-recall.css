@@ -1,0 +1,168 @@
+/* Inherit global variables from styles.css */
+:root {
+    --squid-ink: #232f3e;
+    --bg-color: #fcf4e8da;
+    --color: #ff8f00;
+    --font-heavy: AmazonEmberDisplayHeavy;
+    --font-light: AmazonEmberDisplayLight;
+    --main-font: AmazonEmber;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    font-family: var(--main-font);
+}
+
+.container {
+    max-width: min(1200px, 90%);
+    margin: 1rem auto;
+    padding: 1rem;
+    background: var(--bg-color-dark);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: var(--squid-ink);
+    font-family: var(--font-heavy);
+    font-size: 2.2rem;
+    line-height: var(--header-line-height);
+}
+
+.chart-container {
+    width: 100%;
+    margin: 1rem auto;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#beeswarm-chart {
+    width: 100%;
+    height: 300px;
+}
+
+#key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+#key-title {
+    color: var(--squid-ink);
+    font-size: 1rem;
+    font-family: var(--font-heavy);
+    padding-right: 0.5rem;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.chip {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 4px;
+    /* Adjusted to harmonize with --color */
+    background: var(--color);
+}
+
+.chip.negative {
+    background: #7e93ee; /* Slightly muted to blend with palette */
+}
+
+.chip.positive {
+    background: #ffaa33; /* Complementary to --color */
+}
+
+.name {
+    color: var(--squid-ink);
+    font-size: 1rem;
+    font-family: var(--font-light);
+}
+
+#confusion-matrix {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+#confusion-matrix table {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 1.1rem;
+}
+
+#confusion-matrix td,
+#confusion-matrix th {
+    border: 2px solid #dddddd;
+    padding: 8px;
+    color: var(--squid-ink);
+    font-family: var(--font-light);
+}
+
+#confusion-matrix th:nth-child(1) {
+    border: 0;
+}
+
+#metrics {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+#metrics h2 {
+    color: var(--squid-ink);
+    margin-bottom: 1rem;
+    font-family: var(--font-heavy);
+    font-size: 1.5rem;
+}
+
+#metrics p {
+    font-size: 1rem;
+    color: var(--squid-ink);
+    margin: 0.5rem 0;
+    font-family: var(--font-light);
+}
+
+#metrics span {
+    font-weight: bold;
+    color: var(--color);
+}
+
+/* Decision boundary text styles */
+.decision-boundary text {
+    font-size: 1rem;
+    font-family: var(--font-heavy);
+    fill: var(--squid-ink);
+}
+
+/* Responsive adjustments */
+@media (max-width: 950px) {
+    .container {
+        max-width: 98vw;
+        padding: 0.5rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .chart-container {
+        padding: 0.5rem;
+    }
+    #confusion-matrix table {
+        font-size: 1rem;
+    }
+    #metrics h2 {
+        font-size: 1.3rem;
+    }
+}

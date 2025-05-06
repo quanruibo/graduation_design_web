@@ -1,0 +1,155 @@
+/* 继承全局变量 */
+:root {
+    --squid-ink: #232f3e;
+    --bg-color: #fcf4e8da;
+    --color: #ff8f00;
+    --font-heavy: AmazonEmberDisplayHeavy;
+    --font-light: AmazonEmberDisplayLight;
+    --main-font: AmazonEmber;
+  }
+  
+  body {
+    font-family: var(--main-font);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+  }
+  
+  #gd-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: auto;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  #equations-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #charts-container {
+    display: grid;
+    grid-template-rows: 60% 40%;
+    max-height: 500px;
+    width: 100%;
+  }
+  
+  .chart {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  button {
+    background-color: var(--color);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+    font-family: var(--font-heavy);
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #e07b00;
+  }
+  
+  .show-button {
+    background-color: #f0f0f0;
+    color: var(--squid-ink);
+    border: 2px solid var(--squid-ink);
+  }
+  
+  .slider {
+    width: 80%;
+    margin: 8px auto;
+    display: block;
+    height: 15px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .hidden-section {
+    display: none;
+    border: 5px solid #4CAF50;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  
+  .feedback {
+    color: #4CAF50;
+    font-family: var(--font-heavy);
+    margin-top: 10px;
+  }
+  
+  .grid-line {
+    opacity: 0.075;
+    stroke: var(--squid-ink);
+    stroke-dasharray: 4;
+  }
+  
+  .axis-line {
+    stroke: var(--squid-ink);
+    stroke-width: 1;
+  }
+  
+  .axis-text {
+    font-size: 0.7rem;
+    font-family: var(--font-light);
+  }
+  
+  .axis-label {
+    font-family: var(--font-heavy);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+  
+  .regression-line {
+    stroke: var(--squid-ink);
+    stroke-width: 3.5;
+    fill: none;
+  }
+  
+  .regression-circle {
+    fill: var(--color);
+    stroke-width: 0;
+  }
+  
+  .error-line {
+    stroke: #666;
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .error-text {
+    font-size: 0.8rem;
+    stroke: var(--bg-color);
+    stroke-width: 4px;
+    paint-order: stroke fill;
+    font-family: var(--font-light);
+  }
+  
+  @media screen and (max-width: 950px) {
+    #gd-container {
+      grid-template-columns: 100%;
+    }
+  }

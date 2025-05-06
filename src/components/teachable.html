@@ -1,0 +1,40 @@
+<div class="teachable-container">
+  <p id="model-loading-notice" style="color: red; margin-bottom: 10px;">
+    正在加载 MobileNet 模型，请稍候（可能需要 1-2 分钟，视网络状况而定）。
+  </p>
+  <h2>人工智能分类体验</h2>
+  <div class="teachable-content">
+    <div class="video-container">
+      <video autoplay playsinline></video>
+    </div>
+    <div class="controls" id="teachable-controls"></div>
+  </div>
+  <div class="confusion-matrix-container">
+    <h3>模型表现评估 - 混淆矩阵</h3>
+    <p>手动输入你观察到的模型预测结果，计算精确率、召回率等指标！</p>
+    <div id="confusion-matrix-wrapper"></div>
+    <button id="reset-matrix">重置矩阵</button>
+    <div class="metrics">
+      <h4>评估指标</h4>
+      <p>准确度 (Accuracy) = 正确预测总数 / 样本总数</p>
+      <p>精确度 (Precision) = TP / (TP + FP)（正类）</p>
+      <p>召回率 (Recall) = TP / (TP + FN)（正类）</p>
+      <p>F1 分数 = 2 * (Precision * Recall) / (Precision + Recall)（正类）</p>
+      <p id="example">当前无数据，请输入 TP、TN、FP、FN。</p>
+    </div>
+  </div>
+  <div class="bias-experiment-container" id="bias-experiment-container">
+    <h3>数据不平衡实验</h3>
+    <p>通过手动采样 P 类和 N 类，观察不平衡数据对模型的影响！</p>
+    <div id="bias-controls">
+      <button id="sample-p">采样 P 类</button>
+      <button id="sample-n">采样 N 类</button>
+      <button id="run-bias-experiment">运行不平衡实验</button>
+    </div>
+    <div id="bias-result" style="display: none;">
+      <p id="bias-output"></p>
+      <p><strong>讨论问题</strong>：如果模型只认识某些类别，会不会不公平？现实中哪些场景可能有类似问题？</p>
+      <p><strong>头脑风暴</strong>：AI 还能帮我们做什么？（例如，检测课堂专注度、辅助特殊教育等）</p>
+    </div>
+  </div>
+</div>

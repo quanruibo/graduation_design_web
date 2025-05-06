@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>监督式人工智能模型与责任</title>
+    <meta name="description" content="监督式人工智能模型与责任" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/rainfall.css" />
+    <link rel="stylesheet" href="./css/precision-recall.css" />
+    <link rel="stylesheet" href="./css/teachable.css" />
+    <script src="/node_modules/katex/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="/node_modules/katex/dist/katex.min.css" />
+  </head>
+  <body>
+    <main></main>
+    <header class="main-header">
+      <div class="logo">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="20" fill="orange" />
+          <line x1="50" y1="50" x2="50" y2="80" stroke="orange" stroke-width="2" />
+          <circle cx="50" cy="80" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="80" y2="50" stroke="orange" stroke-width="2" />
+          <circle cx="80" cy="50" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="20" y2="50" stroke="orange" stroke-width="2" />
+          <circle cx="20" cy="50" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="50" y2="20" stroke="orange" stroke-width="2" />
+          <circle cx="50" cy="20" r="5" fill="orange" />
+        </svg>
+        <h1>智核实验室</h1>
+      </div>
+      <div class="nav-buttons">
+        <div class="nav-item">
+          <a class="nav-link" data-page="datasets" href="/datasets.html" target="_blank">数据的作用</a>
+          <div class="dropdown">
+            <a href="/datasets.html#intro" target="_blank">引言：AI的魔法</a>
+            <a href="/datasets.html#split" target="_blank">数据分割</a>
+            <a href="/datasets.html#train" target="_blank">训练集</a>
+            <a href="/datasets.html#model" target="_blank">模型与分类</a>
+            <a href="/datasets.html#validation" target="_blank">验证集</a>
+            <a href="/datasets.html#test" target="_blank">测试集</a>
+            <a href="/datasets.html#all" target="_blank">总结</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" data-page="models" href="/models.html">模型与道德</a>
+          <div class="dropdown">
+            <a href="#intro">引言：模型学习数据的模式</a>
+            <a href="#linear">活动1：线性回归逼近数据</a>
+            <a href="#evaluation">活动2：评估模型效果</a>
+            <a href="#train">活动3：动手训练模型</a>
+            <a href="#impact">活动4：技术与社会影响</a>
+            <a href="#summary">总结</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="scrolly">
+      <figure>
+        <div id="main-wrapper">
+          <div id="chart-wrapper">
+            <div id="rainfall-predictor" class="component-container" style="display: none;"></div>
+            <div id="precision-recall-chart" class="component-container" style="display: none;"></div>
+            <div id="teachable-chart" class="component-container" style="display: none;"></div>
+          </div>
+        </div>
+      </figure>
+      <article>
+        <section data-index="0" class="intro" id="intro">
+          <h2>模型学习数据的模式</h2>
+          <p>
+            同学们，想象一下，如果我们想让电脑学会预测天气、识别猫狗，甚至帮助医生诊断疾病，该怎么办？<br /><br />
+            答案是：用模型！模型就像一个聪明的模仿者，通过观察数据中的规律，学会预测或分类。接下来的四个活动将带你探索模型如何学习数据、如何评估模型的表现，以及模型与数据的责任。<br /><br />
+            准备好了吗？让我们开始吧！
+          </p>
+        </section>
+        <section data-index="1" class="linear" id="linear">
+          <h2>活动1：模型如何逼近数据</h2>
+          <p>
+            首先，我们来看一个简单的模型——线性回归。想象你有一堆温度和降雨量数据，想知道温度能不能预测降雨量。<br /><br />
+            右边的图表展示了一组散点数据，代表温度和降雨量的关系。点击“走1步”“走25步”或“自动运行”，观察模型如何调整一条直线，逐渐贴近这些点。每一步，模型都在“学习”，让预测更接近真实数据。<br /><br />
+            <span class="highlight">试试拖动滑块</span>，手动调整直线的起点（β₀）和斜率（β₁），看看会发生什么！
+          </p>
+        </section>
+        <section data-index="2" class="evaluation" id="evaluation">
+          <h2>活动2：评估模型效果</h2>
+          <p>
+            模型学会数据的模式后，怎么知道它学的好不好呢？我们可以用混淆矩阵、精确率和召回率来评估。<br /><br />
+            右边的图表展示了一个诊断任务的数据点（比如判断病人是否生病）。<span class="highlight">拖动黑色决策边界</span>，观察数据被分成“阳性”和“阴性”后，混淆矩阵如何变化。下面的指标会告诉你模型的准确度、精确率和召回率。<br /><br />
+            试着调整边界，看看能不能让精确率和召回率都变高！
+          </p>
+        </section>
+        <section data-index="3" class="train" id="train">
+          <h2>活动3：动手训练模型</h2>
+          <p>
+            现在轮到你来训练一个模型了！你要给模型提供一些分好类的训练数据让模型学习，这样模型就能学到不同类型对象的图像模式，并学会识别他们<br /><br />
+            右边的视频窗口会显示你的摄像头画面。输入两个类别名称（比如“笑脸”和“哭脸”），然后按住“训练”按钮，采集样本。完成后，模型会实时对屏幕中的对象进行分类哦。<br /><br />
+            接着，观察模型的预测结果，<span class="highlight">手动填写混淆矩阵</span>（点击 + 或 -），看看你的模型表现如何！
+          </p>
+        </section>
+        <section data-index="4" class="impact" id="impact">
+          <h2>活动4：技术与社会影响</h2>
+          <p>
+            模型很厉害，但如果数据有问题，会怎么样？让我们试试不平衡数据的影响。<br /><br />
+            在右边的界面，摆好第一类的样本后点击“采样 P 类”，换成第二类的样本后点击“采样 N 类”，分别采集不同数量的样本（P 类 20 个，N 类 5 个）。<br /><br />
+            观察模型的预测偏向哪个类别。<br /><br />
+            思考一下：如果一个类别的样本是另一个的 4 倍，会对结果有什么影响？现实中，比如招聘或医疗中，这种偏差会带来什么问题？
+          </p>
+        </section>
+        <section data-index="5" class="summary" id="summary">
+          <h2>总结：模型的力量与责任</h2>
+          <p>
+            通过这四个活动，你看到模型如何从数据中学习（活动1），学会评估它的表现（活动2），亲手训练一个模型（活动3），并思考数据偏差的影响（活动4）。<br /><br />
+            模型是模仿数据的工具，但它能不能帮我们解决问题，取决于我们给它什么样的数据。你觉得 AI 还能做什么？快来分享你的想法吧！
+          </p>
+        </section>
+        <p id="end-p"></p>
+      </article>
+    </div>
+    <script type="module" src="./js/models-index.js"></script>
+    <script type="module" src="./js/roughAnnotations.js"></script>
+    <script type="module" src="./js/rainfall.js"></script>
+    <script type="module" src="./js/precision-recall.js"></script>
+    <script type="module" src="./js/teachable-machine.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>精确度与召回率交互式演示</h1>
+    <div class="chart-container">
+      <svg id="beeswarm-chart" width="600" height="300"></svg>
+      <div id="key">
+        <p id="key-title">诊断:</p>
+        <div class="key-item">
+          <div class="chip negative">-</div>
+          <span class="name">阴性</span>
+        </div>
+        <div class="key-item">
+          <div class="chip positive">+</div>
+          <span class="name">阳性</span>
+        </div>
+      </div>
+    </div>
+    <div id="confusion-matrix">
+      <table>
+        <tr>
+          <th></th>
+          <th>预测: 阳性</th>
+          <th>预测: 阴性</th>
+        </tr>
+        <tr>
+          <td>实际: 阳性</td>
+          <td id="tp">TP: 0</td>
+          <td id="fn">FN: 0</td>
+        </tr>
+        <tr>
+          <td>实际: 阴性</td>
+          <td id="fp">FP: 0</td>
+          <td id="tn">TN: 0</td>
+        </tr>
+      </table>
+    </div>
+    <div id="metrics">
+      <h2>评估指标</h2>
+      <p id="accuracy-formula">
+        准确度 (Accuracy) = (TP + TN) / (TP + TN + FP + FN) = <span id="accuracy-value">0%</span>
+      </p>
+      <p id="precision-formula">
+        精确度 (Precision) = TP / (TP + FP) = <span id="precision-value">0%</span>
+      </p>
+      <p id="recall-formula">
+        召回率 (Recall) = TP / (TP + FN) = <span id="recall-value">0%</span>
+      </p>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>数据的作用</title>
+    <meta name="description" content="Datasets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main></main>
+    <header class="main-header">
+      <div class="logo">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="20" fill="orange" />
+          <line x1="50" y1="50" x2="50" y2="80" stroke="orange" stroke-width="2" />
+          <circle cx="50" cy="80" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="80" y2="50" stroke="orange" stroke-width="2" />
+          <circle cx="80" cy="50" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="20" y2="50" stroke="orange" stroke-width="2" />
+          <circle cx="20" cy="50" r="5" fill="orange" />
+          <line x1="50" y1="50" x2="50" y2="20" stroke="orange" stroke-width="2" />
+          <circle cx="50" cy="20" r="5" fill="orange" />
+        </svg>
+        <h1>智核实验室</h1>
+      </div>
+      <div class="nav-buttons">
+        <div class="nav-item">
+          <a class="nav-link" data-page="datasets" href="/datasets.html">数据的作用</a>
+          <div class="dropdown">
+            <a href="#intro">引言：AI的魔法</a>
+            <a href="#split">数据分割</a>
+            <a href="#train">训练集</a>
+            <a href="#model">模型与分类</a>
+            <a href="#validation">验证集</a>
+            <a href="#test">测试集</a>
+            <a href="#all">总结</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" data-page="models" href="/models.html" target="_blank">模型与道德</a>
+          <div class="dropdown">
+            <a href="/models.html#intro" target="_blank">引言：模型是模仿数据的工具</a>
+            <a href="/models.html#linear" target="_blank">活动1：线性回归逼近数据</a>
+            <a href="/models.html#evaluation" target="_blank">活动2：评估模型效果</a>
+            <a href="/models.html#train" target="_blank">活动3：动手训练模型</a>
+            <a href="/models.html#impact" target="_blank">活动4：技术与社会影响</a>
+            <a href="/models.html#summary" target="_blank">总结</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="scrolly">
+      <figure>
+        <div id="main-wrapper">
+          <div class="button-container">
+            <p>特征:</p>
+            <button class="button" value="neither">无</button>
+            <button class="button active" value="weight">体重</button>
+            <button class="button" value="fluffiness">毛绒程度</button>
+            <button class="button" value="both">二者</button>
+          </div>
+          <div id="chart-wrapper">
+            <div id="chart"></div>
+            <div id="table"></div>
+            <div id="scatter-chart" class="extra-chart" style="display: none;"></div>
+            <div class="controls" id="scatter-controls" style="display: none;">
+              <p><span class="bold">温度: </span><span id="temp-value">-10</span> 摄氏度</p>
+              <input type="range" min="-10" max="40" value="-10" class="slider" id="tempSlider" />
+              <p><span class="bold">决策边界: </span><span id="boundary-value">0.5</span></p>
+              <input type="range" min="0" max="1" step="0.01" value="0.5" class="slider" id="boundarySlider" />
+              <p>预测结果为 <span class="bold" id="prediction">阴天</span>。</p>
+            </div>
+            <div id="train-impact-chart" class="extra-chart" style="display: none;"></div>
+            <div id="model-optimization-chart" class="extra-chart" style="display: none;"></div>
+            <div id="tech-impact-chart" class="extra-chart" style="display: none;"></div>
+          </div>
+        </div>
+      </figure>
+      <article>
+        <section data-index="0" class="intro" id="intro">
+          <h2>AI的魔法</h2>
+          <p>
+            同学们，想象一下，你捡到一只可爱的小动物，长得像猫又像狗，你怎么猜它是啥？或者周末想去公园玩，但不知道明天是晴天还是雨天，怎么办？<br /><br />
+            AI 就像一个魔法师，能帮我们从一堆信息里找到答案！它需要把信息分成三份，就像把作业分成“练习”“检查”和“考试”。右边的图表会展示一群宠物，看它们是怎么被分组的！<br /><br />
+            快来一起探索 AI 的魔法吧！
+          </p>
+        </section>
+        <section data-index="1" class="split" id="split">
+          <h2>把数据分成三份</h2>
+          <p>
+            要让 AI 学会猜猫狗或预测天气，我们得把数据分成三个小助手：<br /><br />
+            <span id="annotation4"><span class="bold">训练集</span></span>:
+            <span class="item-text">像老师，教 AI 怎么认东西。</span><br /><br />
+            <span id="annotation5"><span class="bold">验证集</span></span>:
+            <span class="item-text">像检查员，看 AI 学得怎么样。</span><br /><br />
+            <span id="annotation6"><span class="bold">测试集</span></span>:
+            <span class="item-text">像考官，给 AI 打最终分数。</span><br /><br />
+            右边的图表会把宠物分成这三组，看看它们各有什么任务！
+          </p>
+        </section>
+        <section data-index="2" class="train" id="train">
+          <h2>让模型学习</h2>
+          <p>
+            训练集就像 AI 的老师，教它怎么认猫和狗。比如，胖胖的狗、毛茸茸的猫，都得让 AI 见识一下！<br /><br />
+            如果训练集太少，就像老师只教了一点点，AI 可能会猜错。所以我们要给它很多例子，占数据的六到八成！<br /><br />
+            看右边的图表，只有训练集的宠物在动哦！
+          </p>
+        </section>
+        <section data-index="3" class="model" id="model">
+          <h2>AI怎么猜答案</h2>
+          <p>
+            AI 像个聪明侦探，用线索来猜答案。它会画一条“分界线”，把东西分成两类。<br /><br />
+            先试试简单的：右边的“天气小实验”用温度猜是晴天还是雨天。那个曲线是 AI 的“想法”，横线是“分界线”。<span class="highlight">拖动滑块试试</span>，看 AI 怎么预测！<br /><br />
+            接下来，我们会用宠物的体重和毛茸茸程度，看 AI 怎么分猫狗！
+          </p>
+        </section>
+        <section data-index="3.5" class="model-transition" id="model-transition">
+          <h2>现在来看猫狗</h2>
+          <p>从天气切换到猫狗分类，快继续往下看吧！</p>
+        </section>
+        <section data-index="4" class="train-impact" id="train-impact">
+          <h2>你来教AI</h2>
+          <p>
+            训练集是 AI 的“教科书”，你给的数据决定它怎么画分界线。右边是训练集的宠物，每个点是一只猫或狗。<br /><br />
+            <span class="highlight">快试试拖动这些点</span>！如果你改了宠物的体重或毛茸茸程度，分界线也会变。这说明训练集超级重要！<br /><br />
+            你能帮 AI 画出更好的线吗？
+          </p>
+        </section>
+        <section data-index="5" class="validation" id="validation">
+          <h2>检查AI的作业</h2>
+          <p>
+            AI 学完后，验证集就像检查作业的老师，看它猜得对不对。我们可以用不同的线索，比如“只看体重”或“只看毛茸茸”，来测试 AI。<br /><br />
+            如果只看训练集，就像考试前偷看答案，AI 可能只是背答案。验证集帮我们找出最靠谱的 AI！<br /><br />
+            <span class="highlight">点右边的按钮</span>，看看表格里的分数怎么变！
+          </p>
+        </section>
+        <section data-index="6" class="test" id="test">
+          <h2>AI的期末考试</h2>
+          <p>
+            选好 AI 后，测试集就像期末考试，检查它能不能在真实世界里考高分！<br /><br />
+            <b>记住：不能提前看测试集</b>，不然就像考试作弊，太不公平啦。右边的表格会告诉你 AI 的最终成绩，看看它有多厉害！<br /><br />
+            我们的 AI 能猜对 <span class="highlight"><span id="accuracy-value">75%</span></span> 的猫狗哦！
+          </p>
+        </section>
+        <section data-index="7" class="all" id="all">
+          <h2>总结：AI的超能力</h2>
+          <p>
+            通过训练、检查和考试，AI 学会了猜猫狗，还能预测天气，厉害吧！它能分出猫狗，也能帮你看明天要不要带伞。<br /><br />
+            你觉得 AI 还能做什么好玩的事？快来想象一下吧！
+          </p>
+        </section>
+        <p id="end-p"></p>
+      </article>
+    </div>
+    <script type="module" src="./js/datasets-index.js"></script>
+    <script type="module" src="./js/roughAnnotations.js"></script>
+    <script type="module" src="./js/sigmoidPredict.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'933b465baabb44e5',t:'MTc0NTIyMTY2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

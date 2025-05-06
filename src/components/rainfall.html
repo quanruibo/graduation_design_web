@@ -1,0 +1,46 @@
+<div>
+    <h1>通过温度预测降雨量</h1>
+    <p>
+      大家好！想象一下，你是一名小小气象学家，想知道温度能不能帮助我们预测降雨量。
+      比如，夏天很热的时候，雨水多不多？冬天很冷的时候呢？
+      我们可以用一个简单的模型，通过数据来“学习”温度和降雨量的关系！
+    </p>
+    <p>
+      这个模型就像一个聪明的助手，它会试着画一条线，尽量贴近我们观察到的降雨量数据。
+      但它一开始不知道怎么画，所以需要一步步调整，直到找到最好的线。
+      这个调整的过程就叫做“梯度下降”，就像下山一样，慢慢找到最低点！
+    </p>
+    <p>
+      <strong>什么是梯度下降？</strong><br>
+      梯度下降是一种方法，帮助我们的模型找到最合适的数字（我们叫它们“系数”），
+      让预测的降雨量和实际降雨量尽可能接近。它会一点点试错，直到误差变得很小。
+    </p>
+
+  
+    <div id="gd-container">
+      <div id="equations-container">
+        <p>点击按钮运行梯度下降，看看模型如何调整预测降雨量的线！</p>
+        <div>
+          <button id="step-1">走 1 步</button>
+          <button id="step-25">走 25 步</button>
+          <button id="step-100">走 100 步</button>
+          <button id="add-point-btn">添加一天的数据</button>
+          <button id="reset-btn">重置</button>
+        </div>
+        <div>
+          <p>基础降雨量 (β₀): <span id="bias-value">0.100</span></p>
+          <input type="range" min="-2" max="16" step="0.5" value="0.1" class="slider" id="bias-slider">
+        </div>
+        <div>
+          <p>温度影响 (β₁): <span id="weight-value">0.100</span></p>
+          <input type="range" min="-1.5" max="6" step="0.01" value="0.1" class="slider" id="weight-slider">
+        </div>
+        <div id="equation-display"></div>
+        <div id="feedback"></div>
+      </div>
+      <div id="charts-container">
+        <div id="scatter-chart" class="chart"></div>
+        <div id="error-chart" class="chart"></div>
+      </div>
+    </div>
+  </div>
